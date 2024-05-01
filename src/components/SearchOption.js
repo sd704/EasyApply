@@ -34,7 +34,7 @@ const SearchOption = ({ fieldName, fieldData }) => {
 
     return (
         <>
-            <FormControl sx={{ m: 1, width: 300 }}>
+            <FormControl sx={{ m: 1, width: 200 }}>
                 <InputLabel id="demo-multiple-checkbox-label">{fieldName}</InputLabel>
                 <Select
                     labelId="demo-multiple-checkbox-label"
@@ -42,7 +42,7 @@ const SearchOption = ({ fieldName, fieldData }) => {
                     multiple
                     value={selectedFields}
                     onChange={handleChange}
-                    input={<OutlinedInput label="Tag" />}
+                    input={<OutlinedInput label={fieldName} />}
                     // renderValue={(selected) => selected.join(', ')}
                     renderValue={(selected) => (
                         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>

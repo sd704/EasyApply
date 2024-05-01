@@ -3,7 +3,7 @@ export const FIELDS = [
     "Number of Employees",
     "Experience",
     "Remote",
-    "Minimum Base Pay Salary"
+    "Minimum Base Pay"
 ]
 
 export const FIELDDATA = [
@@ -36,3 +36,5 @@ export const FIELDDATA = [
         "15LPA"
     ]
 ]
+
+export const API = "https://api.weekday.technology/adhoc/getSampleJdJSON"
