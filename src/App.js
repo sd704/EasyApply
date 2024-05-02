@@ -6,24 +6,32 @@ import TextField from '@mui/material/TextField';
 import SearchOption from './components/SearchOption';
 import JobCard from './components/JobCard';
 import { FIELDS, FIELDDATA } from './utils/constants';
-import useJobsApi from './hooks/useJobsApi';
 import { useState, useEffect } from 'react';
+import useJobsApi from './hooks/useJobsApi';
 import useObserve from './hooks/useObserve';
+import useFilter from './hooks/useFilter';
 import { useDispatch } from 'react-redux';
 import { addItems } from './redux/filtersSlice'
+
 
 function App() {
 
   const [apiData, setApiData] = useState([])
+  const [filteredData, setFilteredData] = useState([])
   const [offset, setOffset] = useState(0)
   const [searchfield, setSearchField] = useState("")
   const page = useJobsApi(offset)
+  const filteredPage = useFilter(apiData)
   const dispatch = useDispatch();
   dispatch(addItems({ fieldName: "search", selectedFields: searchfield }))
 
   useEffect(() => {
     setApiData(prev => [...prev, ...page])
   }, [page]);
+
+  useEffect(() => {
+    setFilteredData(filteredPage)
+  }, [filteredPage]);
 
   const increaseOffset = () => {
     setOffset(prev => prev + 1);
@@ -52,11 +60,11 @@ function App() {
       </div>
 
       <div className='alljobs'>
-        {apiData.length === 0 && <div className='shimmer1'></div>}
-        {apiData.length === 0 && <div className='shimmer1'></div>}
-        {apiData.length === 0 && <div className='shimmer1'></div>}
-        {apiData.length === 0 && <div className='shimmer1'></div>}
-        {apiData.length > 0 && apiData.map((job, index) => <JobCard
+        {filteredData.length === 0 && <div className='shimmer1'></div>}
+        {filteredData.length === 0 && <div className='shimmer1'></div>}
+        {filteredData.length === 0 && <div className='shimmer1'></div>}
+        {filteredData.length === 0 && <div className='shimmer1'></div>}
+        {filteredData.length > 0 && filteredData.map((job, index) => <JobCard
           key={job.jdUid + (index + 1)}
           id={job.jdUid + (index + 1)}
           name={"Company " + (index + 1)}
@@ -68,7 +76,7 @@ function App() {
           minsalary={job.minJdSalary}
           maxsalary={job.maxJdSalary}
         />)}
-        {apiData.length > 0 && <div className='shimmer2' ref={ref}></div>}
+        {filteredData.length > 0 && <div className='shimmer2' ref={ref}></div>}
       </div >
     </>
   );

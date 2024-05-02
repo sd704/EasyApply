@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const filtersSlice = createSlice({
-    name: "filters",
+    name: "filter",
     initialState: {
         roles: [],
-        employees: [],
+        // employees: [],
         experience: [],
         location: [],
         basepay: [],
@@ -16,9 +16,9 @@ const filtersSlice = createSlice({
                 case "Roles":
                     state.roles = action.payload.selectedFields
                     break;
-                case "Number of Employees":
-                    state.employees = action.payload.selectedFields
-                    break;
+                // case "Number of Employees":
+                //     state.employees = action.payload.selectedFields
+                //     break;
                 case "Experience":
                     state.experience = action.payload.selectedFields
                     break;

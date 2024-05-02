@@ -11,9 +11,11 @@ export const FIELDDATA = [
         "FrontEnd",
         "Backend",
         "FullStack",
+        "Android",
         "IOS",
         "React Native",
-        "Flutter"
+        "Flutter",
+        "Tech Lead",
     ], [
         "01-10",
         "20-50",
@@ -24,7 +26,10 @@ export const FIELDDATA = [
         "1",
         "2",
         "3",
-        "4"
+        "4",
+        "6",
+        "8",
+        "10"
     ], [
         "Remote",
         "In-Office",

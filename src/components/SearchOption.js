@@ -26,6 +26,11 @@ const SearchOption = ({ fieldName, fieldData }) => {
     const [selectedFields, setSelectedFields] = useState([]);
     const listData = [...fieldData];
     const dispatch = useDispatch();
+    // const selectedFieldslowerCase = selectedFields.map(str => str.toLowerCase())
+    // dispatch(addItems({
+    //     fieldName: fieldName,
+    //     selectedFields: selectedFieldslowerCase
+    // }))
     dispatch(addItems({ fieldName, selectedFields }))
 
     const handleChange = (event) => {
