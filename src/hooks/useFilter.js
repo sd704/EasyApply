@@ -25,14 +25,14 @@ const useFilter = (page) => {
 
             setfilteredPage(
                 page.filter(job =>
-                    (job.jobRole && searchFilter.roles.map(s => s.toLowerCase()).includes(job.jobRole.toLowerCase())) ||
-                    (job.maxExp && searchFilter.experience.includes(job.maxExp)) ||
-                    (job.minExp && searchFilter.experience.includes(job.minExp)) ||
-                    (job.location && searchFilter.location.map(s => s.toLowerCase()).includes(job.location.toLowerCase())) ||
+                    (job.jobRole && searchFilter.roles.length !== 0 && searchFilter.roles.map(s => s.toLowerCase()).includes(job.jobRole.toLowerCase())) ||
+                    (job.maxExp && searchFilter.experience.length !== 0 && searchFilter.experience.includes(job.maxExp)) ||
+                    (job.minExp && searchFilter.experience.length !== 0 && searchFilter.experience.includes(job.minExp)) ||
+                    (job.location && searchFilter.location.length !== 0 && searchFilter.location.map(s => s.toLowerCase()).includes(job.location.toLowerCase())) ||
                     (job.minJdSalary && checkBasePay(searchFilter.basepay.map(s => s.charAt(0)), job.minJdSalary)) ||
-                    (job.maxJdSalary && searchFilter.basepay.map(s => s.charAt(0)).includes(job.maxJdSalary)) ||
-                    job.location.toLowerCase().includes(searchFilter.searchfield.toLowerCase()) ||
-                    job.jobRole.toLowerCase().includes(searchFilter.searchfield.toLowerCase())
+                    (job.maxJdSalary && searchFilter.basepay.length !== 0 && searchFilter.basepay.map(s => s.charAt(0)).includes(job.maxJdSalary)) ||
+                    (searchFilter.searchfield.length >= 3 && job.location.toLowerCase().includes(searchFilter.searchfield.toLowerCase())) ||
+                    (searchFilter.searchfield.length >= 3 && job.jobRole.toLowerCase().includes(searchFilter.searchfield.toLowerCase()))
                 )
             )
         } else {

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { API } from '../utils/constants'
 
 const useJobsApi = (offsetValue) => {
     const [page, setPage] = useState([])
@@ -19,7 +18,7 @@ const useJobsApi = (offsetValue) => {
                 body: raw
             };
 
-            await fetch(API, requestOptions)
+            await fetch(process.env.REACT_APP_API_CDN, requestOptions)
                 .then((response) => response.json())
                 .then((result) => setPage(result?.jdList))
                 .catch((error) => console.error(error));

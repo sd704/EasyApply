@@ -41,5 +41,3 @@ export const FIELDDATA = [
         "15LPA"
     ]
 ]
-
-export const API = "https://api.weekday.technology/adhoc/getSampleJdJSON"

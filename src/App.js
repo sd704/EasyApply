@@ -15,7 +15,6 @@ import { addItems } from './redux/filtersSlice'
 
 
 function App() {
-
   const [apiData, setApiData] = useState([])
   const [filteredData, setFilteredData] = useState([])
   const [offset, setOffset] = useState(0)
@@ -83,3 +82,15 @@ function App() {
 }
 
 export default App;
+
+// On initial render, shimmer div blocks are displayed
+// Then "page" gets updated after receiving api data from useJobsApi() custom hook
+// Then useEffect() gets executed where page data is appended to apiData state variable
+// After apiData is update, we filter the apiData using useFilter() custom hook, 
+// which is assigned to filteredData state
+// then the component is re-renderd with the filteredData
+
+// For infinite scroll, we observe the shimmer div at the end of page
+// when the div is on screen, it gets detected using useObserve() custom hook,
+// which increments offset value, which then again calls the api
+// the api data, page, is appended and re-filtered and then rendered
