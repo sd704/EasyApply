@@ -17,7 +17,6 @@ function App() {
   const page = useJobsApi(offset)
 
   useEffect(() => {
-    console.log("Api called")
     setApiData(prev => [...prev, ...page])
   }, [page]);
 
@@ -28,7 +27,7 @@ function App() {
   //If shimmer2 is onscreen, we observe that and change offset
   //On change of offset, useJobsApi() is called and page gets updated
   //when page gets updated, useEffect is called, page gets appended to apiData
-  const ref = useObserve(apiData.length, increaseOffset)
+  const ref = useObserve(increaseOffset)
 
   return (
     <>
@@ -44,12 +43,15 @@ function App() {
 
       <div className='alljobs'>
         {apiData.length === 0 && <div className='shimmer1'></div>}
+        {apiData.length === 0 && <div className='shimmer1'></div>}
+        {apiData.length === 0 && <div className='shimmer1'></div>}
+        {apiData.length === 0 && <div className='shimmer1'></div>}
         {apiData.length > 0 && apiData.map((job, index) => <JobCard
-          key={job.jUid}
-          id={job.jUid}
+          key={job.jdUid + (index + 1)}
+          id={job.jdUid + (index + 1)}
           name={"Company " + (index + 1)}
           role={job.jobRole.charAt(0).toUpperCase() + job.jobRole.slice(1)}
-          details={job.jobDetailsFromCompany}
+          details={job.jobDetailsFromCompany.substring(0, 390) + "  ...Click to read more."}
           location={job.location.charAt(0).toUpperCase() + job.location.slice(1)}
           maxExp={job.maxExp}
           minExp={job.minExp}

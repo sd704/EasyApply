@@ -1,9 +1,8 @@
 import { useRef, useCallback } from 'react';
 
-const useObserve = (length, increaseOffset) => {
+const useObserve = (increaseOffset) => {
     const observer = useRef();
     const ref = useCallback(element => {
-        if (length === 0) return;
         if (observer.current) observer.current.disconnect();
         observer.current = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting) {
@@ -11,7 +10,7 @@ const useObserve = (length, increaseOffset) => {
             }
         });
         if (element) observer.current.observe(element);
-    }, [length]);
+    }, []);
 
     return ref;
 }

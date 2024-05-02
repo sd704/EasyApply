@@ -23,6 +23,7 @@ const JobCard = ({ id, name, role, details, location, maxExp, minExp, maxsalary,
             </div>
             <h2>Job Description:</h2>
             <p>{details}</p>
+            <button className="applybutton">Apply</button>
         </div>
     )
 }
