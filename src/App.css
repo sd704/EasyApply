@@ -63,3 +63,21 @@ h1 {
 .jobicon {
     font-size: x-large;
 }
+
+.shimmer1 {
+    width: 25%;
+    height: 500px;
+    border: 1px solid rgb(190, 190, 190);
+    border-radius: 8px;
+    margin: 8px;
+    background-color: aquamarine;
+}
+
+.shimmer2 {
+    width: 25%;
+    height: 500px;
+    border: 1px solid rgb(190, 190, 190);
+    border-radius: 8px;
+    margin: 8px;
+    background-color: burlywood;
+}

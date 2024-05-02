@@ -9,11 +9,13 @@ const JobCard = ({ id, name, role, details, location, maxExp, minExp, maxsalary,
                 <div>
                     <h1>{name}</h1>
                     <h2>{role}</h2>
-                    {location && minExp && maxExp && <h3>{location} | Exp: {minExp}-{maxExp} years</h3>}
-                    {location && !minExp && !maxExp && <h3>{location}</h3>}
-                    {!location && minExp && maxExp && <h3>Exp: {minExp}-{maxExp} years</h3>}
-                    {location && !minExp && maxExp && <h3>{location} | Exp: {maxExp} years</h3>}
-                    {location && minExp && !maxExp && <h3>{location} | Exp: {minExp} years</h3>}
+                    <h3>
+                        {location && <span>{location}</span>}
+                        {minExp && maxExp && <span> | Exp: {minExp}-{maxExp} years</span>}
+                        {minExp && !maxExp && <span> | Exp: {minExp} years</span>}
+                        {!minExp && maxExp && <span> | Exp: {maxExp} years</span>}
+                    </h3>
+
                     {minsalary && maxsalary && <h3>Estimated Salary: ₹{minsalary}-{maxsalary} LPA</h3>}
                     {minsalary && !maxsalary && <h3>Estimated Salary: ₹{minsalary} LPA</h3>}
                     {!minsalary && maxsalary && <h3>Estimated Salary: ₹{maxsalary} LPA</h3>}

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { API } from '../utils/constants'
 
 const useJobsApi = (offsetValue) => {
-    const [data, setData] = useState(null)
+    const [page, setPage] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,13 +21,13 @@ const useJobsApi = (offsetValue) => {
 
             await fetch(API, requestOptions)
                 .then((response) => response.json())
-                .then((result) => setData(result?.jdList))
+                .then((result) => setPage(result?.jdList))
                 .catch((error) => console.error(error));
         }
         fetchData();
     }, [offsetValue]);
 
-    return data;
+    return page;
 }
 
 export default useJobsApi;
