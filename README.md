@@ -1,5 +1,8 @@
 ## EasyApply 
 
+#### Site Link
+[https://easy-apply-eight.vercel.app](https://easy-apply-eight.vercel.app)
+
 A mock job site that lets you search for jobs and apply easily. Based on [WeekDay](https://jobs.weekday.works/). Check comments in App.js to view logic and working explaination. 
 
 ### Features
