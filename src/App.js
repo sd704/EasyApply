@@ -9,12 +9,17 @@ import { FIELDS, FIELDDATA } from './utils/constants';
 import useJobsApi from './hooks/useJobsApi';
 import { useState, useEffect } from 'react';
 import useObserve from './hooks/useObserve';
+import { useDispatch } from 'react-redux';
+import { addItems } from './redux/filtersSlice'
 
 function App() {
 
   const [apiData, setApiData] = useState([])
   const [offset, setOffset] = useState(0)
+  const [searchfield, setSearchField] = useState("")
   const page = useJobsApi(offset)
+  const dispatch = useDispatch();
+  dispatch(addItems({ fieldName: "search", selectedFields: searchfield }))
 
   useEffect(() => {
     setApiData(prev => [...prev, ...page])
@@ -29,6 +34,10 @@ function App() {
   //when page gets updated, useEffect is called, page gets appended to apiData
   const ref = useObserve(increaseOffset)
 
+  const handleSearchfieldChange = (e) => {
+    setSearchField(e.target.value)
+  }
+
   return (
     <>
       <h1>Search Jobs</h1>
@@ -37,7 +46,8 @@ function App() {
           (field, index) => <SearchOption key={index} fieldName={field} fieldData={FIELDDATA[index]} />
         )}
         <FormControl sx={{ m: 1, width: 200 }}>
-          <TextField id="outlined-basic" label="Search Company Name" variant="outlined" />
+          <TextField id="outlined-basic" label="Search anything" variant="outlined"
+            value={searchfield} onChange={handleSearchfieldChange} />
         </FormControl>
       </div>
 

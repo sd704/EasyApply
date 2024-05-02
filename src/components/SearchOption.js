@@ -8,6 +8,8 @@ import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import Chip from '@mui/material/Chip';
 import Box from '@mui/material/Box';
+import { useDispatch } from 'react-redux';
+import { addItems } from '../redux/filtersSlice'
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -21,9 +23,10 @@ const MenuProps = {
 };
 
 const SearchOption = ({ fieldName, fieldData }) => {
-
     const [selectedFields, setSelectedFields] = useState([]);
     const listData = [...fieldData];
+    const dispatch = useDispatch();
+    dispatch(addItems({ fieldName, selectedFields }))
 
     const handleChange = (event) => {
         const { target: { value }, } = event;
